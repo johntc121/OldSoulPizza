@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Old Soul Pizza</title>
+        <meta name="author "    content="John">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+        <script>
+            const shiftWindow = () => { scrollBy(0, -50) };
+            window.addEventListener("hashchange", shiftWindow);
+            const load = () => {if (window.location.hash) shiftWindow()}
+        </script>
+    </head>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Old Soul Pizza</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#top">About <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#middle">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#bottom">Hours</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    <body onload="load()">
+
+        <div class="container">
+            <img src="../images/logo.png" alt="Logo" id="logo">
+            <div class="col-lg-10 mx-auto col-12 text-center mb-3" id="top">
+                <h1>About Us</h1>
+                <div class="col-12 mt-4">
+                    <h5 class="text-center">About us</h5>
+                    <hr class="accent my-5">
+                </div>
+            </div>
+            <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+                            <h1>Our Menu</h1>
+                            <!-- <p class="lead">Begin with a selection from our award winning beverage menu or choose a wine from our extensive wine list. Our wine list features over 100 different vintages and has received the chamber of commerce award of excellence.</p> -->
+                        </div>
+                        <div class="col-12 mt-4">
+                            <h3 class="text-center">Pizzas</h3>
+                            <hr class="accent my-5">
+                        </div>
+                        <div class="card-columns">
+                            <div class="card card-body" id="card">
+                                <span class="float-right font-weight-bold">$9 | $16</span>
+                                <h6 class="text-truncate">Pepperoni</h6>
+                                <p class="small">House red sauce, whole milk mozzarella, feta, regular & spicy pepperoni</p>
+                            </div>
+                            <div class="card card-body" id="card">
+                                <span class="float-right font-weight-bold">$9.50 | 17</span>
+                                <h6 class="text-truncate">Mrs. White</h6>
+                                <p class="small">House white sauce, whole milk mozzarella, mushroom, bacon, fresh basil</p>
+                            </div>
+                            <div class="card card-body" id="card">
+                                <span class="float-right font-weight-bold">$9.50 | 17</span>
+                                <h6 class="text-truncate">BBQ Chicken</h6>
+                                <p class="small">Honey bourbon bbq sauce, whole milk mozzarella, feta, chicken, bacon, red onions</p>
+                            </div>
+                            <div class="card card-body" id="card">
+                                <span class="float-right font-weight-bold">$9.50 | 17</span>
+                                <h6 class="text-truncate">Spicy Hawaiian</h6>
+                                <p class="small">House red auce, whole milk mozzarella, feta, canadian bacon, jalapeno, pineapple</p>
+                            </div>
+                            <div class="card card-body" id="card">
+                                    <span class="float-right font-weight-bold">$9.50 | 17</span>
+                                    <h6 class="text-truncate">Apollo (v)</h6>
+                                    <p class="small">House red sauce or white sauce, whoe milk mozzarella, feta, onions, muishroom, tomato, fresh basil</p>
+                                </div>
+                                <div class="card card-body" id="card">
+                                    <span class="float-right font-weight-bold">$9.50 | 17</span>
+                                    <h6 class="text-truncate">Zesty Sausage</h6>
+                                    <p class="small">House white sauce, whole milk mozzarella, spicy italian Sausage, jalapeno, pineapple</p>
+                                </div>
+                        </div>
+                    </div>
+            </div>
+            <div id="bottom">
+                <div id="hours" class="col-12 mt-4">
+                    <h5 class="text-center">Hours</h5>
+                    <hr class="accent my-5">
+                </div>
+                <div id="location" class="col-12 mt-4">
+                    <h5 class="text-center">Location</h5>
+                    <hr class="accent my-5">
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+#logo
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    padding-top: 50px;
+}
+
+body{
+    background-image: url("../images/background.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.card-columns {
+    column-count: 3;
+}
+
+#card
+{
+    background-color: rgba(220, 220, 220);
+    
+}
+
+#bottom
+{
+    width: 80%;
+    height: 200px;
+    margin: auto;
+    padding: 10px;
+}
+
+#hours
+{
+    width: 15%;
+    height: 200px;
+    float: left
+}
+
+#location
+{
+    margin-left: 15%;
+    height: 200px;
+
+}
