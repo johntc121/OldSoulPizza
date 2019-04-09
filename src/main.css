@@ -13,34 +13,43 @@ body{
     background-size: cover;
 }
 
-.card-columns {
-    column-count: 3;
-}
 
 #card
 {
-    background-color: rgba(220, 220, 220);
+    background-color: rgba(100 , 220, 220);
+    margin-bottom: 10px
     
 }
 
 #bottom
 {
-    width: 80%;
-    height: 200px;
+    
     margin: auto;
-    padding: 10px;
+    padding: 25px;
 }
 
-#hours
+
+
+
+
+#hoursContent
 {
-    width: 15%;
-    height: 200px;
-    float: left
+    text-align: center;
 }
 
-#location
+#locationContent
 {
-    margin-left: 15%;
-    height: 200px;
+    text-align: center;
+    
+} 
 
+#link
+{
+    color: black
+}
+
+#price 
+{
+    color: red;
+    text-align: right
 }
