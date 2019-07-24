@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Old Soul Pizza</title>
+    <meta name="author "    content="John">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <script>
+        const shiftWindow = () => { scrollBy(0, -50) };
+        window.addEventListener("hashchange", shiftWindow);
+        const load = () => {if (window.location.hash) shiftWindow()}
+        
+
+        //try to do addEventListener in main.js
+
+        var pizzasHidden = false;
+        var saladsHidden = false;
+        var appetizersHidden = false;
+
+        const pizzas = document.getElementsByClassName("pizzas");
+        const salads = document.getElementsByClassName("salads");
+        const appetizers = document.getElementsByClassName("appetizers");
+
+        function showPizzas(){
+
+            if(!saladsHidden){
+                toggleSalads();
+            }
+
+            if(!appetizersHidden){
+                toggleAppetizers();
+            }
+            if(pizzasHidden){
+                togglePizzas();
+            }
+        }
+
+        function showSalads(){
+
+            if(!pizzasHidden){
+                togglePizzas();
+            }
+            if(!appetizersHidden){
+                toggleAppetizers();
+            }
+
+            if(saladsHidden){
+                toggleSalads();
+            }
+        }
+
+        function showAppetizers(){
+            if(!pizzasHidden){
+                togglePizzas();
+            }
+            if(!saladsHidden){
+                toggleSalads();
+            }
+
+            if(appetizersHidden){
+                toggleAppetizers();
+            }
+        }
+
+        function showAll(){
+            if(saladsHidden){
+                for(let i = 0; i < salads.length; i++){
+                    salads[i].style.display= "block";
+                }
+                saladsHidden = false;
+            }
+
+            if(pizzasHidden){
+                for(let i = 0; i < pizzas.length; i++){
+                    pizzas[i].style.display= "block";
+                }
+                pizzasHidden = false;
+            }
+
+            if(appetizersHidden){
+                for(let i = 0; i < appetizers.length; i++){
+                    appetizers[i].style.display= "block";
+                }
+                appetizersHidden = false;
+            }
+        }
+
+        function togglePizzas(){
+            for(let i = 0; i < pizzas.length; i++){
+                if (pizzas[i].style.display === "none"){
+                    pizzas[i].style.display = "block";
+                    pizzasHidden = false;
+                }
+                else{
+                    pizzas[i].style.display = "none";
+                    pizzasHidden = true;
+                }
+                
+            };
+        };
+
+        function toggleSalads(){
+            for(let i = 0; i < salads.length; i++){
+                if (salads[i].style.display === "none"){
+                    salads[i].style.display = "block";
+                    saladsHidden = false;
+                }
+                else{
+                    salads[i].style.display = "none";
+                    saladsHidden = true;
+                }
+                
+            };
+        };
+
+        function toggleAppetizers(){
+            for(let i = 0; i < appetizers.length; i++){
+                if (appetizers[i].style.display === "none"){
+                    appetizers[i].style.display = "block";
+                    appetizersHidden = false;
+                }
+                else{
+                    appetizers[i].style.display = "none";
+                    appetizersHidden = true;
+                }
+                
+            };
+        };
+    </script>
+
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/6.3.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/6.3.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+  </head>
+  <body onload="load()">
+
+    <header>
+        <nav class="navbar navbar-default navbar-static-top navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Old Soul Pizza</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#HoursAndLocation">Hours</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a href="tel:541-672-3513">541-672-3513</a> 
+                </span>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container">
+        
+        
+        <div class="container">
+            <img src="logo.png" alt="Logo" id="logo">
+
+            <hr class="accent">
+        </div>
+
+        <div id="Menu" class="row container ">
+            <div class="container">
+                <div class="text-center">
+                    <a id="menu-selector" class="nav-link" onclick="showAll()" href="#!"><h1>Menu</h1></a>
+                </div>
+                <div >
+                    <ul class="nav justify-content-center" id="menu-nav">
+                        <li class="nav-item">
+                            <a id="menu-nav-pizza" class="nav-link active" onclick="showPizzas()" href="#!">Pizzas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="menu-nav-salads" class="nav-link" onclick="showSalads()" href="#!">Salads</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="menu-nav-appetizers" class="nav-link" onclick="showAppetizers()" href="#!">Appetizers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$8 | $10</span>
+                    <h6 class="text-truncate">Cheese (V)</h6>
+                    <p class="small">House red sauce, fresh mozzarella, whole milk mozzarella, feta, parmesan reggiano</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9 | $16</span>
+                    <h6 class="text-truncate">Margherita (V)</h6>
+                    <p class="small">House red sauce, fresh mozzarella, feta, parmesan reggiano, tomato, fresh basil</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9 | $16</span>
+                    <h6 class="text-truncate">Pepperoni</h6>
+                    <p class="small">House red sauce, whole milk mozzarella, feta, pepperoni</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">Mrs. White</h6>
+                    <p class="small">House white sauce, whole milk mozzarella, mushrooms, bacon, fresh basil</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">BBQ Chicken</h6>
+                    <p class="small">Honey bourbon bbq sauce, whole milk mozzarella, feta, chicken, bacon, red onions</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">Spicy Hawaiian</h6>
+                    <p class="small">House red sauce, whole milk mozzarella, feta, canadian bacon, jalapeno, pineapple</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">Apollo (V)</h6>
+                    <p class="small">House red sauce or white sauce, whole milk mozzarella, feta, onions, mushrooms, tomato, fresh basil</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">Zesty Sausage</h6>
+                    <p class="small">House white sauce, whole milk mozzarella, spicy italian Sausage, jalapeno, pineapple</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">Mia Malia</h6>
+                    <p class="small">House red sauce, parmesan reggiano, fresh mozzarella, Salami, jalapeno, honey, black pepepr</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">T.V.C (Vegan)</h6>
+                    <p class="small">House red sauce, nutritional yeast, mushrooms, onions, artichokes, roasted garlic, tomatoes, fresh basil, arugala</p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">Bigfoot Joe</h6>
+                    <p class="small">House red sauce, parmesan reggiano, whole milk mozzarella, salami, canadian bacon, 
+                        mushrooms, black olives, feta
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">Smokey G'ses</h6>
+                    <p class="small">House white sauce, whole milk mozzarella, feta, chicken, bacon, roasted garlic, 
+                        artichoke hearts, tomatoes
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">Going Bananas (V)</h6>
+                    <p class="small">House white sauce, parmesan reggiano, whole milk mozzarella, banana peppers,
+                        mushrooms, tomato, roasted garlic, fresh arugala
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4 pizzas">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$9.50 | $17</span>
+                    <h6 class="text-truncate">Weekly Specials</h6>
+                    <p class="small">Call to ask for details</p>
+                </div>
+            </div>
+            <div class="col-sm-4 appetizers">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$4</span>
+                    <h6 class="text-truncate">Garlic Knots</h6>
+                    <p class="small">Choice of white or marinara sauce</p>
+                </div>
+            </div>
+            <div class="col-sm-4 salads">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$3</span>
+                    <h6 class="text-truncate">Side Salad</h6>
+                    <p class="small">Mixed greens with tomatoes and cucumbers</p>
+                </div>
+            </div>
+            <div class="col-sm-4 salads">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$8</span>
+                    <h6 class="text-truncate">PNW Greek Salad</h6>
+                    <p class="small">Artichoke, hazelnutes, tomatoes, feta, mushrooms, red onions</p>
+                </div>
+            </div>
+            <div class="col-sm-4 salads">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$8</span>
+                    <h6 class="text-truncate">Veggie Salad</h6>
+                    <p class="small">Mushrooms, avocado, tomatoes, cucumbers, red onions, parmesan reggiano</p>
+                </div>
+            </div>
+            <div class="col-sm-4 salads">
+                <div class="card card-body" style="background-color: #fcf7d2;">
+                    <span class="float-right font-weight-bold">$2</span>
+                    <h6 class="text-truncate">Add Chicken or Bacon</h6>
+                    <p class="small">Mixed greens with tomatoes and cucumbers</p>
+                </div>
+            </div>
+
+        </div>
+        
+        <div id="HoursAndLocation" class="row">
+            <div class="col-lg-6 column">
+                <div id="hours">
+                    <div class="text-center mb-3">
+                        <h1>Hours</h1>
+                    </div>
+                    <hr class="accent">
+                    <div id="hoursContent">
+                        <p>Sunday: <strong>Closed</strong></p>
+                        <p>Monday: <strong>Closed</strong></p>
+                        <p>Tuesday: <strong>3pm-8pm</strong></p>
+                        <p>Wednesday: <strong>3pm-8pm</strong></p>
+                        <p>Thursday: <strong>11am-8pm</strong></p>
+                        <p>Friday: <strong>11am-8pm</strong></p>
+                        <p>Saturday: <strong>12pm-6pm</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 column">
+                <div id="location" >
+                    <div class="text-center mb-3">
+                        <h1>Location</h1>
+                    </div>
+                    <hr class="accent">
+                    <div id="locationContent">
+                        <a href="https://goo.gl/maps/Fz2nZ95aS3M2" target="_blank" rel="noopener" 
+                            id="link">525 S.E. MAIN ST., ROSEBURG, OR</a>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2908.018138942954!2d-123.34518108451661!3d43.20910887913903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54c4232f6a681d57%3A0x97be642f79cb37d8!2sOld+Soul+Pizza!5e0!3m2!1sen!2sus!4v1554446695039!5m2!1sen!2sus" 
+                            width="400" height="300" style="border:0" allowfullscreen>
+                        </iframe>
+                            
+                    </div> 
+                </div>
+            </div>
+
+        </div> 
+        
+    </div>  
+</body>
+</html>
